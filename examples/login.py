@@ -1,3 +1,5 @@
+## Copy Pasted From the main.py file
+
 from pyodide.http import pyfetch
 import asyncio
 import json
@@ -396,9 +398,6 @@ class ApiClient(ABC):
                 results[-1].result.errno)(results_raw[-1]["result"])
         return self.pack_responses(results_raw, 2)
 
-
-
-
 class Client(ApiClient):
     """ Main object for handling LernSax access and responses. """
 
@@ -423,3 +422,11 @@ class Client(ApiClient):
             method="POST"
         )
         return await res.json()
+    
+    
+client = Client(
+    input("Email: "),
+    input("Passwort: ")
+)
+
+print(await client.login())
